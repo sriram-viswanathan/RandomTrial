@@ -2,11 +2,133 @@
   "categories": [
     {
       "id": 1,
-      "name" : "Category 1"
+      "value" : "Category 1",
+      "options": [
+        {
+          "id": "co1",
+          "value": "CO1"
+        },
+        {
+          "id": "co2",
+          "value": "CO2"
+        },
+        {
+          "id": "co3",
+          "value": "CO3"
+        },
+        {
+          "id": "co4",
+          "value": "CO4"
+        },
+        {
+          "id": "co5",
+          "value": "CO5"
+        }
+      ]
     },
     {
       "id": 2,
-      "name" : "Category 2"
+      "value" : "Category 2",
+      "options": [
+        {
+          "id": "co1",
+          "value": "CO1"
+        },
+        {
+          "id": "co2",
+          "value": "CO2"
+        },
+        {
+          "id": "co3",
+          "value": "CO3"
+        },
+        {
+          "id": "co4",
+          "value": "CO4"
+        },
+        {
+          "id": "co5",
+          "value": "CO5"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "value" : "Category 3",
+      "options": [
+        {
+          "id": "co1",
+          "value": "CO1"
+        },
+        {
+          "id": "co2",
+          "value": "CO2"
+        },
+        {
+          "id": "co3",
+          "value": "CO3"
+        },
+        {
+          "id": "co4",
+          "value": "CO4"
+        },
+        {
+          "id": "co5",
+          "value": "CO5"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "value" : "Category 4",
+      "options": [
+        {
+          "id": "co1",
+          "value": "CO1"
+        },
+        {
+          "id": "co2",
+          "value": "CO2"
+        },
+        {
+          "id": "co3",
+          "value": "CO3"
+        },
+        {
+          "id": "co4",
+          "value": "CO4"
+        },
+        {
+          "id": "co5",
+          "value": "CO5"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "value" : "Category 5",
+      "options": [
+        {
+          "id": "co1",
+          "value": "CO1"
+        },
+        {
+          "id": "co2",
+          "value": "CO2"
+        },
+        {
+          "id": "co3",
+          "value": "CO3"
+        },
+        {
+          "id": "co4",
+          "value": "CO4"
+        },
+        {
+          "id": "co5",
+          "value": "CO5"
+        }
+      ]
     }
   ]
 }

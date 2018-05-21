@@ -4,7 +4,7 @@ import * as CommonStyle from '../styles/';
 
 export default createStackNavigator(NavigationScreens,
   {
-    initialRouteName: 'BingoHome',
+    initialRouteName: 'BingoCard',
     navigationOptions: {
       headerStyle: {
         backgroundColor: CommonStyle.DARK

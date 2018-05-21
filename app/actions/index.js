@@ -11,6 +11,6 @@ export function getDummyData() {
         type: DUMMY_DATA_AVAILABLE,
         data: data
       });
-    }, 2000);
+    }, 100);
   }
 }
