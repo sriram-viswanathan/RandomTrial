@@ -21,16 +21,17 @@ class CategoryRow extends Component {
       optionTiles.push(
         <Tile
           key={ options[i].id }
-          data={ options[i] }
+          category={ data }
+          option={ options[i] }
         />
       );
-      options[i]
     }
     return(
       <View style={ CategoryRowStyle.rowContainer }>
         <Tile
           key={ data.id }
-          data={ data }
+          category={ data }
+          option={ data }
           isHeader={ true }
         />
         { optionTiles }

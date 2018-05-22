@@ -14,7 +14,7 @@ export default StyleSheet.create({
     flex: 1
   },
 
-  columnsContainer: {
+  rowsContainer: {
     flex: 1,
     flexDirection: 'row'
   }

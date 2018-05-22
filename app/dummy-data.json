@@ -6,23 +6,28 @@
       "options": [
         {
           "id": "co1",
-          "value": "CO1"
+          "value": "CO1",
+          "isSelected": false
         },
         {
           "id": "co2",
-          "value": "CO2"
+          "value": "CO2",
+          "isSelected": false
         },
         {
           "id": "co3",
-          "value": "CO3"
+          "value": "CO3",
+          "isSelected": false
         },
         {
           "id": "co4",
-          "value": "CO4"
+          "value": "CO4",
+          "isSelected": false
         },
         {
           "id": "co5",
-          "value": "CO5"
+          "value": "CO5",
+          "isSelected": false
         }
       ]
     },
@@ -32,23 +37,28 @@
       "options": [
         {
           "id": "co1",
-          "value": "CO1"
+          "value": "CO1",
+          "isSelected": false
         },
         {
           "id": "co2",
-          "value": "CO2"
+          "value": "CO2",
+          "isSelected": false
         },
         {
           "id": "co3",
-          "value": "CO3"
+          "value": "CO3",
+          "isSelected": false
         },
         {
           "id": "co4",
-          "value": "CO4"
+          "value": "CO4",
+          "isSelected": false
         },
         {
           "id": "co5",
-          "value": "CO5"
+          "value": "CO5",
+          "isSelected": false
         }
       ]
     },
@@ -58,23 +68,28 @@
       "options": [
         {
           "id": "co1",
-          "value": "CO1"
+          "value": "CO1",
+          "isSelected": false
         },
         {
           "id": "co2",
-          "value": "CO2"
+          "value": "CO2",
+          "isSelected": false
         },
         {
           "id": "co3",
-          "value": "CO3"
+          "value": "CO3",
+          "isSelected": false
         },
         {
           "id": "co4",
-          "value": "CO4"
+          "value": "CO4",
+          "isSelected": false
         },
         {
           "id": "co5",
-          "value": "CO5"
+          "value": "CO5",
+          "isSelected": false
         }
       ]
     },
@@ -84,23 +99,28 @@
       "options": [
         {
           "id": "co1",
-          "value": "CO1"
+          "value": "CO1",
+          "isSelected": false
         },
         {
           "id": "co2",
-          "value": "CO2"
+          "value": "CO2",
+          "isSelected": false
         },
         {
           "id": "co3",
-          "value": "CO3"
+          "value": "CO3",
+          "isSelected": false
         },
         {
           "id": "co4",
-          "value": "CO4"
+          "value": "CO4",
+          "isSelected": false
         },
         {
           "id": "co5",
-          "value": "CO5"
+          "value": "CO5",
+          "isSelected": false
         }
       ]
     },
@@ -110,23 +130,28 @@
       "options": [
         {
           "id": "co1",
-          "value": "CO1"
+          "value": "CO1",
+          "isSelected": false
         },
         {
           "id": "co2",
-          "value": "CO2"
+          "value": "CO2",
+          "isSelected": false
         },
         {
           "id": "co3",
-          "value": "CO3"
+          "value": "CO3",
+          "isSelected": false
         },
         {
           "id": "co4",
-          "value": "CO4"
+          "value": "CO4",
+          "isSelected": false
         },
         {
           "id": "co5",
-          "value": "CO5"
+          "value": "CO5",
+          "isSelected": false
         }
       ]
     }

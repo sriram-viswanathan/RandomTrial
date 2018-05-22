@@ -20,6 +20,10 @@ export default StyleSheet.create({
     borderColor: CommonStyle.GRAY_500
   },
 
+  tileContainerSelected: {
+    backgroundColor: CommonStyle.GRAY_300,
+  },
+
   tileContent: {
     fontSize: 11,
     fontWeight: '400',

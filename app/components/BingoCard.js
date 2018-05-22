@@ -53,7 +53,7 @@ class BingoCard extends Component {
           <StatusBar
              barStyle="light-content"
            />
-          <View style={ BingoCardStyle.columnsContainer}>
+          <View style={ BingoCardStyle.rowsContainer }>
             { categoryRows }
           </View>
         </View>
