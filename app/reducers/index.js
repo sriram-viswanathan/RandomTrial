@@ -1,19 +1,19 @@
 import { combineReducers } from 'redux';
 import * as Actions from '../actions/';
 
-const dummyDataReducer = (state = { dummyData: [], dummyDataLoading: true }, action) => {
+const dataReducer = (state = { allData: [], allDataLoading: true }, action) => {
   switch(action.type) {
-    case Actions.DUMMY_DATA_AVAILABLE:
+    case Actions.ALL_DATA_AVAILABLE:
       return Object.assign(
         {},
         state,
         {
-          dummyData: action.data,
-          dummyDataLoading: false
+          allData: action.data,
+          allDataLoading: false
         }
       );
     case Actions.CARD_DATA_UPDATED:
-      let previousDummyData = state.dummyData;
+      let previousDummyData = state.allData;
       let updatedCategory = action.category;
       let updatedOption = action.option;
 
@@ -38,7 +38,7 @@ const dummyDataReducer = (state = { dummyData: [], dummyDataLoading: true }, act
         {},
         state,
         {
-          dummyData: updatedDummyData
+          allData: updatedDummyData
         }
       );
     default:
@@ -63,7 +63,7 @@ const bingoValidationReducer  = (state = { isValidBingo: false }, action) => {
 
 // combine all reducers
 const rootReducer = combineReducers({
-  dummyDataReducer,
+  dataReducer,
   bingoValidationReducer
 });
 

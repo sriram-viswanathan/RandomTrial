@@ -25,7 +25,10 @@ class Tile extends Component {
     if (isHeaderTile) {
       return(
         <View style={ TileStyle.tileContainer }>
-          <Text style={ TileStyle.tileContent }>
+          <Text
+            style={ [TileStyle.tileContent, TileStyle.tileHeaderContent] }
+            numberOfLines={ 3 }
+          >
             { category.value }
           </Text>
         </View>
@@ -39,7 +42,10 @@ class Tile extends Component {
         <TouchableOpacity
           style={ tileContainerStyles }
           onPress={ this.onTilePress.bind(null, category, option) }>
-          <Text style={ TileStyle.tileContent }>
+          <Text
+            style={ [TileStyle.tileContent, TileStyle.tileBodyContent] }
+            numberOfLines={ 3 }
+          >
             { option.value }
           </Text>
         </TouchableOpacity>

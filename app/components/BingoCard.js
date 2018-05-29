@@ -29,11 +29,11 @@ class BingoCard extends Component {
   }
 
   componentWillMount() {
-    this.props.getDummyData();
+    this.props.getAllData();
   }
 
   render() {
-    if (this.props.dummyDataLoading) {
+    if (this.props.allDataLoading) {
       return(
         <View style={ BingoCardStyle.activityIndicatorContainer }>
         <StatusBar
@@ -43,12 +43,12 @@ class BingoCard extends Component {
         </View>
       );
     } else {
-      let dummyData = this.props.dummyData;
+      let allData = this.props.allData;
       let categoryRows = [];
-      for (let i = 0; i < dummyData.length; i++) {
+      for (let i = 0; i < allData.length; i++) {
         categoryRows.push(
           <CategoryRow
-            data={ dummyData[i] }
+            data={ allData[i] }
             key={ i }
           />
         );
@@ -77,7 +77,7 @@ class BingoCard extends Component {
   }
 
   onValidateBingoPress() {
-    let data = this.props.dummyData;
+    let data = this.props.allData;
     let selectedOptions = [];
     for (let i = 0; i < data.length; i++) {
       let selectedOption = data[i].options.filter(this.isSelected);
@@ -89,7 +89,7 @@ class BingoCard extends Component {
   }
 
   isBingo() {
-    let data = this.props.dummyData;
+    let data = this.props.allData;
     let i, j;
     let isRowBingo, isColumnBingo, isDiagonalBingo, isOtherDiagonalBingo;
 
@@ -156,8 +156,8 @@ class BingoCard extends Component {
 // This function makes Redux know that this component needs to be passed a piece of the state
 function mapStateToProps(state, props) {
   return {
-    dummyDataLoading: state.dummyDataReducer.dummyDataLoading,
-    dummyData: state.dummyDataReducer.dummyData,
+    allDataLoading: state.dataReducer.allDataLoading,
+    allData: state.dataReducer.allData,
     isValidBingo: state.bingoValidationReducer.isValidBingo
   }
 }

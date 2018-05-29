@@ -3,7 +3,7 @@ import * as CommonStyle from './index';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: CommonStyle.GRAY_200,
+    backgroundColor: CommonStyle.LIGHT,
     flex: 1
   },
 

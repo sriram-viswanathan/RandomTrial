@@ -11,6 +11,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
 
+    padding: 1,
+
     backgroundColor: CommonStyle.LIGHT,
 
     borderTopWidth: 0.5,
@@ -25,7 +27,18 @@ export default StyleSheet.create({
   },
 
   tileContent: {
-    fontSize: 11,
+    textAlign: 'center',
+    lineHeight: 20
+  },
+
+  tileHeaderContent: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: CommonStyle.GRAY_800,
+  },
+
+  tileBodyContent: {
+    fontSize: 14,
     fontWeight: '400',
     color: CommonStyle.GRAY_800
   }
