@@ -46,9 +46,25 @@ const dummyDataReducer = (state = { dummyData: [], dummyDataLoading: true }, act
   }
 }
 
+const bingoValidationReducer  = (state = { isValidBingo: false }, action) => {
+  switch(action.type) {
+    case Actions.BINGO_DATA_VALIDATED:
+      return Object.assign(
+        {},
+        state,
+        {
+          isValidBingo: action.isValidBingo
+        }
+      );
+    default:
+      return state;
+    }
+}
+
 // combine all reducers
 const rootReducer = combineReducers({
-  dummyDataReducer
+  dummyDataReducer,
+  bingoValidationReducer
 });
 
 export default rootReducer;

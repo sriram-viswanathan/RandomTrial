@@ -15,7 +15,11 @@ export default StyleSheet.create({
   },
 
   rowsContainer: {
-    flex: 1,
+    flex: 3,
     flexDirection: 'row'
+  },
+
+  validateBingoContainer: {
+    flex: 1
   }
 })

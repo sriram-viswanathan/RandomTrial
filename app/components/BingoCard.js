@@ -6,11 +6,15 @@ import {
   ActivityIndicator
 } from 'react-native';
 
+const CARD_ROWS = 5;
+const CARD_COLUMNS = 5;
+
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../actions/';
 
 import CategoryRow from './CategoryRow';
+import BingoButton from './BingoButton';
 import BingoCardStyle from '../styles/BingoCardStyle';
 
 class BingoCard extends Component {
@@ -21,6 +25,7 @@ class BingoCard extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.onValidateBingoPress = this.onValidateBingoPress.bind(this);
   }
 
   componentWillMount() {
@@ -56,9 +61,93 @@ class BingoCard extends Component {
           <View style={ BingoCardStyle.rowsContainer }>
             { categoryRows }
           </View>
+          <View style= { BingoCardStyle.validateBingoContainer }>
+            <BingoButton
+              onPress = { this.onValidateBingoPress }
+              isEnabled={ this.isBingo() }
+            />
+          </View>
         </View>
       );
     }
+  }
+
+  isSelected(item) {
+    return item.isSelected;
+  }
+
+  onValidateBingoPress() {
+    let data = this.props.dummyData;
+    let selectedOptions = [];
+    for (let i = 0; i < data.length; i++) {
+      let selectedOption = data[i].options.filter(this.isSelected);
+      selectedOption.forEach((option) => {
+        selectedOptions.push(option);
+      });
+    }
+    this.props.validateBingo(selectedOptions);
+  }
+
+  isBingo() {
+    let data = this.props.dummyData;
+    let i, j;
+    let isRowBingo, isColumnBingo, isDiagonalBingo, isOtherDiagonalBingo;
+
+    // check for row bingo
+    for (i = 0; i < CARD_COLUMNS; i++) {
+      isColumnBingo = true;
+      for (j = 0; j < CARD_ROWS; j++) {
+        if (!data[i].options[j].isSelected) {
+          isColumnBingo = false;
+        }
+      }
+      // continue to next column
+      if (!isColumnBingo) {
+        isColumnBingo = false;
+      } else {
+        break;
+      }
+    }
+
+    // check for column bingo
+    for (i = 0; i < CARD_ROWS; i++) {
+      isRowBingo = true;
+      for (j = 0; j < CARD_COLUMNS; j++) {
+        if (!data[j].options[i].isSelected) {
+          isRowBingo = false;
+        }
+      }
+      // continue to next row
+      if (!isRowBingo) {
+        isRowBingo = false;
+      } else {
+        break;
+      }
+    }
+
+    // check for diagonal bingo
+    i = 0;
+    isDiagonalBingo = true;
+    while (i < CARD_ROWS) {
+      if (!data[i].options[i].isSelected) {
+        isDiagonalBingo = false;
+      }
+      i++;
+    }
+
+    // check for other diagonal bingo
+    i = 0;
+    j = CARD_ROWS - 1;
+    isOtherDiagonalBingo = true;
+    while (i < CARD_COLUMNS && j >= 0) {
+      if (!data[i].options[j].isSelected) {
+        isOtherDiagonalBingo = false;
+      }
+      i++;
+      j--;
+    }
+
+    return isRowBingo || isColumnBingo || isDiagonalBingo || isOtherDiagonalBingo;
   }
 }
 
@@ -68,7 +157,8 @@ class BingoCard extends Component {
 function mapStateToProps(state, props) {
   return {
     dummyDataLoading: state.dummyDataReducer.dummyDataLoading,
-    dummyData: state.dummyDataReducer.dummyData
+    dummyData: state.dummyDataReducer.dummyData,
+    isValidBingo: state.bingoValidationReducer.isValidBingo
   }
 }
 
