@@ -1,0 +1,156 @@
+{
+  "round": "round_731000000",
+  "categories": [
+    {
+      "description" : "Category 1",
+      "options": [
+        {
+          "description": "Cat 1 Row 1",
+          "isSelected": false,
+          "mappedNumber": 1
+        },
+        {
+          "description": "Cat 1 Row 2",
+          "isSelected": false,
+          "mappedNumber": 2
+        },
+        {
+          "description": "Cat 1 Row 3",
+          "isSelected": false,
+          "mappedNumber": 3
+        },
+        {
+          "description": "Cat 1 Row 4",
+          "isSelected": false,
+          "mappedNumber": 4
+        },
+        {
+          "id": "c1_c5",
+          "description": "Cat 1 Row 5",
+          "isSelected": true,
+          "mappedNumber": 5
+        }
+      ]
+    },
+    {
+      "description" : "Category 2",
+      "options": [
+        {
+          "description": "Cat 2 Row 1",
+          "isSelected": false,
+          "mappedNumber": 6
+        },
+        {
+          "description": "Cat 2 Row 2",
+          "isSelected": false,
+          "mappedNumber": 7
+        },
+        {
+          "description": "Cat 2 Row 3",
+          "isSelected": false,
+          "mappedNumber": 8
+        },
+        {
+          "description": "Cat 2 Row 4",
+          "isSelected": true,
+          "mappedNumber": 9
+        },
+        {
+          "description": "Cat 2 Row 5",
+          "isSelected": false,
+          "mappedNumber": 10
+        }
+      ]
+    },
+    {
+      "description" : "Category 3",
+      "options": [
+        {
+          "description": "Cat 3 Row 1",
+          "isSelected": false,
+          "mappedNumber": 11
+        },
+        {
+          "description": "Cat 3 Row 2",
+          "isSelected": false,
+          "mappedNumber": 12
+        },
+        {
+          "description": "Cat 3 Row 3",
+          "isSelected": true,
+          "mappedNumber": 13
+        },
+        {
+          "description": "Cat 3 Row 4",
+          "isSelected": false,
+          "mappedNumber": 14
+        },
+        {
+          "description": "Cat 3 Row 5",
+          "isSelected": false,
+          "mappedNumber": 15
+        }
+      ]
+    },
+    {
+      "description" : "Category 4",
+      "options": [
+        {
+          "description": "Cat 4 Row 1",
+          "isSelected": false,
+          "mappedNumber": 16
+        },
+        {
+          "description": "Cat 4 Row 2",
+          "isSelected": true,
+          "mappedNumber": 17
+        },
+        {
+          "description": "Cat 4 Row 3",
+          "isSelected": false,
+          "mappedNumber": 18
+        },
+        {
+          "description": "Cat 4 Row 4",
+          "isSelected": false,
+          "mappedNumber": 19
+        },
+        {
+          "description": "Cat 4 Row 5",
+          "isSelected": false,
+          "mappedNumber": 20
+        }
+      ]
+    },
+    {
+      "description" : "Category 5",
+      "options": [
+        {
+          "description": "Cat 5 Row 1",
+          "isSelected": true,
+          "mappedNumber": 21
+        },
+        {
+          "description": "Cat 5 Row 2",
+          "isSelected": false,
+          "mappedNumber": 22
+        },
+        {
+          "description": "Cat 5 Row 3",
+          "isSelected": false,
+          "mappedNumber": 23
+        },
+        {
+          "description": "Cat 5 Row 4",
+          "isSelected": false,
+          "mappedNumber": 24
+        },
+        {
+          "description": "Cat 5 Row 5",
+          "isSelected": false,
+          "mappedNumber": 25
+        }
+      ]
+    }
+  ]
+}

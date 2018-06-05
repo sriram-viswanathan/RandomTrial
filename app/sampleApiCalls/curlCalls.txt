@@ -1,0 +1,6 @@
+  time curl -X POST -H "Content-Type: application/json" /bingo/category -d @category.json
+  time curl -X POST -H "Content-Type: application/json" /bingo/categories -d @categories.json
+  time curl -X POST -H /bingo/round/start
+  time curl -X POST -H /bingo/rounds/stop
+  time curl -X PUT -H "Content-Type: application/json" /bingo/rounds/round_580000000 -d @updateRound.json
+  time curl -X POST -H "Content-Type: application/json" /bingo/validate -d @app/validate.json

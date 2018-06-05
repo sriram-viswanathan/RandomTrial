@@ -1,0 +1,27 @@
+{
+  "category": {
+    "description" : "Category 1",
+    "options": [
+      {
+        "description": "Cat 1 Row 1",
+        "isSelected": false
+      },
+      {
+        "description": "Cat 1 Row 2",
+        "isSelected": false
+      },
+      {
+        "description": "Cat 1 Row 3",
+        "isSelected": false
+      },
+      {
+        "description": "Cat 1 Row 4",
+        "isSelected": false
+      },
+      {
+        "description": "Cat 1 Row 5",
+        "isSelected": false
+      }
+    ]
+  }
+}
