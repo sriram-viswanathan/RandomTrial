@@ -90,61 +90,64 @@ class BingoCard extends Component {
 
   isBingo() {
     let data = this.props.allData;
-    let i, j;
-    let isRowBingo, isColumnBingo, isDiagonalBingo, isOtherDiagonalBingo;
+    let i, j, trueCount;
+    let isRowBingo = isColumnBingo = isDiagonalBingo = isOtherDiagonalBingo = false;
 
-    // check for row bingo
+    // check for column bingo
     for (i = 0; i < CARD_COLUMNS; i++) {
-      isColumnBingo = true;
+      trueCount = 0;
       for (j = 0; j < CARD_ROWS; j++) {
-        if (!data[i].options[j].isSelected) {
-          isColumnBingo = false;
+        if (data[i].options[j].isSelected) {
+          trueCount++;
         }
       }
-      // continue to next column
-      if (!isColumnBingo) {
-        isColumnBingo = false;
-      } else {
+
+      if (trueCount === CARD_ROWS) {
+        isColumnBingo = true;
         break;
       }
     }
 
-    // check for column bingo
+    // check for row bingo
     for (i = 0; i < CARD_ROWS; i++) {
-      isRowBingo = true;
+      trueCount = 0;
       for (j = 0; j < CARD_COLUMNS; j++) {
-        if (!data[j].options[i].isSelected) {
-          isRowBingo = false;
+        if (data[j].options[i].isSelected) {
+          trueCount++;
         }
       }
-      // continue to next row
-      if (!isRowBingo) {
-        isRowBingo = false;
-      } else {
+      if (trueCount === CARD_COLUMNS) {
+        isRowBingo = true;
         break;
       }
     }
 
     // check for diagonal bingo
     i = 0;
-    isDiagonalBingo = true;
+    trueCount = 0;
     while (i < CARD_ROWS) {
-      if (!data[i].options[i].isSelected) {
-        isDiagonalBingo = false;
+      if (data[i].options[i].isSelected) {
+        trueCount++;
       }
       i++;
+    }
+    if (trueCount === CARD_ROWS) {
+      isDiagonalBingo = true;
     }
 
     // check for other diagonal bingo
     i = 0;
     j = CARD_ROWS - 1;
-    isOtherDiagonalBingo = true;
+    trueCount = 0;
     while (i < CARD_COLUMNS && j >= 0) {
-      if (!data[i].options[j].isSelected) {
-        isOtherDiagonalBingo = false;
+      if (data[i].options[j].isSelected) {
+        trueCount++;
       }
       i++;
       j--;
+    }
+    if (trueCount === CARD_ROWS) {
+      isOtherDiagonalBingo = true;
     }
 
     return isRowBingo || isColumnBingo || isDiagonalBingo || isOtherDiagonalBingo;
