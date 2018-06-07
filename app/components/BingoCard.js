@@ -29,6 +29,7 @@ class BingoCard extends Component {
   }
 
   componentWillMount() {
+    debugger;
     this.props.getAllData();
   }
 
@@ -159,6 +160,8 @@ class BingoCard extends Component {
 // This function makes Redux know that this component needs to be passed a piece of the state
 function mapStateToProps(state, props) {
   return {
+    activeRoundData: state.activeRoundReducer.activeRoundData,
+    activeRoundDataLoading: state.activeRoundReducer.activeRoundDataLoading,
     allDataLoading: state.dataReducer.allDataLoading,
     allData: state.dataReducer.allData,
     isValidBingo: state.bingoValidationReducer.isValidBingo

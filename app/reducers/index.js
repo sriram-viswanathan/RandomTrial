@@ -46,6 +46,22 @@ const dataReducer = (state = { allData: [], allDataLoading: true }, action) => {
   }
 }
 
+const activeRoundReducer = (state = { activeRoundData: [], activeRoundDataLoading: true }, action) => {
+  switch(action.type) {
+    case Actions.ACTIVE_ROUND_DATA_AVAILABLE:
+      return Object.assign(
+        {},
+        state,
+        {
+          activeRoundData: action.data,
+          activeRoundDataLoading: false
+        }
+      );
+    default:
+      return state;
+    }
+}
+
 const bingoValidationReducer  = (state = { isValidBingo: false }, action) => {
   switch(action.type) {
     case Actions.BINGO_DATA_VALIDATED:
@@ -64,6 +80,7 @@ const bingoValidationReducer  = (state = { isValidBingo: false }, action) => {
 // combine all reducers
 const rootReducer = combineReducers({
   dataReducer,
+  activeRoundReducer,
   bingoValidationReducer
 });
 
