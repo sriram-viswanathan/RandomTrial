@@ -29,7 +29,7 @@ class Tile extends Component {
             style={ [TileStyle.tileContent, TileStyle.tileHeaderContent] }
             numberOfLines={ 3 }
           >
-            { category.value }
+            { category.description }
           </Text>
         </View>
       );
@@ -46,7 +46,7 @@ class Tile extends Component {
             style={ [TileStyle.tileContent, TileStyle.tileBodyContent] }
             numberOfLines={ 3 }
           >
-            { option.value }
+            { option.description }
           </Text>
         </TouchableOpacity>
       );

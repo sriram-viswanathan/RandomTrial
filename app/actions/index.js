@@ -3,8 +3,11 @@ import allData from '../dummy-data.json';
 // export const API_URL_BASE = "http://pyretire.corp.gq1.yahoo.com:4080/bingo";
 export const API_URL_BASE = "http://equippedtipped.corp.gq1.yahoo.com:4080/bingo";
 
+export const CARD_ROWS = 5;
+export const CARD_COLUMNS = 5;
 export const ALL_DATA_AVAILABLE = "ALL_DATA_AVAILABLE";
 export const ACTIVE_ROUND_DATA_AVAILABLE = "ACTIVE_ROUND_DATA_AVAILABLE";
+export const GENERATE_CARD_DATA = "GENERATE_CARD_DATA";
 export const CARD_DATA_UPDATED = "CARD_DATA_UPDATED";
 export const BINGO_DATA_VALIDATED = "BINGO_DATA_VALIDATED";
 
@@ -44,6 +47,14 @@ export function getActiveRound() {
   }
 }
 
+export function getCardData() {
+  return (dispatch) => {
+    dispatch({
+      type: GENERATE_CARD_DATA
+    });
+  }
+}
+
 export function updateCard(category, option) {
   return (dispatch) => {
     dispatch({
@@ -54,15 +65,25 @@ export function updateCard(category, option) {
   }
 }
 
-export function validateBingo(selectedOptions) {
-  console.log(selectedOptions);
+export function validateBingo(validateBingoData) {
   return (dispatch) => {
-    // Make API call here to validate the combination
-    setTimeout(() => {
-      dispatch({
-        type: BINGO_DATA_VALIDATED,
-        isValidBingo: true
+    let url = API_URL_BASE + "/validate";
+    let fetchOptions = {
+      "body": JSON.stringify(validateBingoData),
+      "cache": "noCache",
+      "headers": {
+        "content-type": "application/json",
+      },
+      "method": "POST"
+    }
+
+    fetch(url, fetchOptions)
+      .then( (response) => response.json() )
+      .then( (responseJson) => {
+        dispatch({
+          type: BINGO_DATA_VALIDATED,
+          isValidBingo: responseJson.validate.status === "SUCCESS" ? true : false
+        });
       });
-    }, 1000);
   }
 }

@@ -6,9 +6,6 @@ import {
   ActivityIndicator
 } from 'react-native';
 
-const CARD_ROWS = 5;
-const CARD_COLUMNS = 5;
-
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../actions/';
@@ -24,17 +21,15 @@ class BingoCard extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
     this.onValidateBingoPress = this.onValidateBingoPress.bind(this);
   }
 
   componentWillMount() {
-    debugger;
-    this.props.getAllData();
+    this.props.getCardData();
   }
 
   render() {
-    if (this.props.allDataLoading) {
+    if (this.props.cardDataLoading) {
       return(
         <View style={ BingoCardStyle.activityIndicatorContainer }>
         <StatusBar
@@ -44,16 +39,17 @@ class BingoCard extends Component {
         </View>
       );
     } else {
-      let allData = this.props.allData;
+      let cardData = this.props.cardData || [];
       let categoryRows = [];
-      for (let i = 0; i < allData.length; i++) {
+      for (let i = 0; i < cardData.length; i++) {
         categoryRows.push(
           <CategoryRow
-            data={ allData[i] }
+            data={ cardData[i] }
             key={ i }
           />
         );
       }
+
       return (
         <View style={ BingoCardStyle.cardContainer }>
           <StatusBar
@@ -67,6 +63,9 @@ class BingoCard extends Component {
               onPress = { this.onValidateBingoPress }
               isEnabled={ this.isBingo() }
             />
+            <View>
+              <Text>{ this.props.validationMessage }</Text>
+            </View>
           </View>
         </View>
       );
@@ -78,46 +77,44 @@ class BingoCard extends Component {
   }
 
   onValidateBingoPress() {
-    let data = this.props.allData;
-    let selectedOptions = [];
-    for (let i = 0; i < data.length; i++) {
-      let selectedOption = data[i].options.filter(this.isSelected);
-      selectedOption.forEach((option) => {
-        selectedOptions.push(option);
-      });
-    }
-    this.props.validateBingo(selectedOptions);
+    let activeRoundData = this.props.activeRoundData[0];
+    this.props.validateBingo({
+      "round": activeRoundData.id,
+      "categories": this.props.cardData
+    });
   }
 
   isBingo() {
-    let data = this.props.allData;
+    let data = this.props.cardData;
     let i, j, trueCount;
     let isRowBingo = isColumnBingo = isDiagonalBingo = isOtherDiagonalBingo = false;
+    let cardRows = Actions.CARD_ROWS;
+    let cardColumns = Actions.CARD_COLUMNS;
 
     // check for column bingo
-    for (i = 0; i < CARD_COLUMNS; i++) {
+    for (i = 0; i < cardColumns; i++) {
       trueCount = 0;
-      for (j = 0; j < CARD_ROWS; j++) {
+      for (j = 0; j < cardRows; j++) {
         if (data[i].options[j].isSelected) {
           trueCount++;
         }
       }
 
-      if (trueCount === CARD_ROWS) {
+      if (trueCount === cardRows) {
         isColumnBingo = true;
         break;
       }
     }
 
     // check for row bingo
-    for (i = 0; i < CARD_ROWS; i++) {
+    for (i = 0; i < cardRows; i++) {
       trueCount = 0;
-      for (j = 0; j < CARD_COLUMNS; j++) {
+      for (j = 0; j < cardColumns; j++) {
         if (data[j].options[i].isSelected) {
           trueCount++;
         }
       }
-      if (trueCount === CARD_COLUMNS) {
+      if (trueCount === cardColumns) {
         isRowBingo = true;
         break;
       }
@@ -126,28 +123,28 @@ class BingoCard extends Component {
     // check for diagonal bingo
     i = 0;
     trueCount = 0;
-    while (i < CARD_ROWS) {
+    while (i < cardRows) {
       if (data[i].options[i].isSelected) {
         trueCount++;
       }
       i++;
     }
-    if (trueCount === CARD_ROWS) {
+    if (trueCount === cardRows) {
       isDiagonalBingo = true;
     }
 
     // check for other diagonal bingo
     i = 0;
-    j = CARD_ROWS - 1;
+    j = cardRows - 1;
     trueCount = 0;
-    while (i < CARD_COLUMNS && j >= 0) {
+    while (i < cardColumns && j >= 0) {
       if (data[i].options[j].isSelected) {
         trueCount++;
       }
       i++;
       j--;
     }
-    if (trueCount === CARD_ROWS) {
+    if (trueCount === cardRows) {
       isOtherDiagonalBingo = true;
     }
 
@@ -162,8 +159,9 @@ function mapStateToProps(state, props) {
   return {
     activeRoundData: state.activeRoundReducer.activeRoundData,
     activeRoundDataLoading: state.activeRoundReducer.activeRoundDataLoading,
-    allDataLoading: state.dataReducer.allDataLoading,
-    allData: state.dataReducer.allData,
+    cardDataLoading: state.dataReducer.cardDataLoading,
+    cardData: state.dataReducer.cardData,
+    validationMessage: state.bingoValidationReducer.validationMessage,
     isValidBingo: state.bingoValidationReducer.isValidBingo
   }
 }

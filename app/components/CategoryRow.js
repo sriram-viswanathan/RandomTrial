@@ -20,7 +20,7 @@ class CategoryRow extends Component {
     for (var i = 0; i < options.length; i++) {
       optionTiles.push(
         <Tile
-          key={ options[i].id }
+          key={ options[i].optionId }
           category={ data }
           option={ options[i] }
         />

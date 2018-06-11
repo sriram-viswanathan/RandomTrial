@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import * as Actions from '../actions/';
+import OptionPicker from '../utils/option-picker-helper';
 
-const dataReducer = (state = { allData: [], allDataLoading: true }, action) => {
+const dataReducer = (state = { allData: [], allDataLoading: true, cardData:[], cardDataLoading: true }, action) => {
   switch(action.type) {
     case Actions.ALL_DATA_AVAILABLE:
       return Object.assign(
@@ -12,8 +13,26 @@ const dataReducer = (state = { allData: [], allDataLoading: true }, action) => {
           allDataLoading: false
         }
       );
+    case Actions.GENERATE_CARD_DATA:
+      let allData = state.allData;
+      let cardData = [];
+
+      for (let i = 0; i < Actions.CARD_COLUMNS; i++) {
+        let category = Object.assign({}, allData[i]);
+        category.options = OptionPicker.getOptions(category.options, Actions.CARD_ROWS, "mappedNumber");
+
+        cardData.push(category);
+      }
+      return Object.assign(
+        {},
+        state,
+        {
+          cardData: cardData,
+          cardDataLoading: false
+        }
+      );
     case Actions.CARD_DATA_UPDATED:
-      let previousDummyData = state.allData;
+      let previousDummyData = state.cardData;
       let updatedCategory = action.category;
       let updatedOption = action.option;
 
@@ -24,7 +43,7 @@ const dataReducer = (state = { allData: [], allDataLoading: true }, action) => {
         for (var j = 0; j < previousDummyData[i].options.length; j++) {
           let option = Object.assign({}, previousDummyData[i].options[j]);
 
-          if (updatedCategory.id === previousDummyData[i].id && option.id === updatedOption.id) {
+          if (updatedCategory.id === previousDummyData[i].id && option.optionId === updatedOption.optionId) {
             option.isSelected = !option.isSelected;
           }
 
@@ -38,7 +57,7 @@ const dataReducer = (state = { allData: [], allDataLoading: true }, action) => {
         {},
         state,
         {
-          allData: updatedDummyData
+          cardData: updatedDummyData
         }
       );
     default:
@@ -62,14 +81,15 @@ const activeRoundReducer = (state = { activeRoundData: [], activeRoundDataLoadin
     }
 }
 
-const bingoValidationReducer  = (state = { isValidBingo: false }, action) => {
+const bingoValidationReducer  = (state = { isValidBingo: false, validationMessage: '' }, action) => {
   switch(action.type) {
     case Actions.BINGO_DATA_VALIDATED:
       return Object.assign(
         {},
         state,
         {
-          isValidBingo: action.isValidBingo
+          isValidBingo: action.isValidBingo,
+          validationMessage: action.isValidBingo ? 'BINGO' : 'Sorry, not a bingo'
         }
       );
     default:

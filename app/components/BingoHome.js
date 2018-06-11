@@ -25,10 +25,13 @@ class BingoHome extends Component {
 
   componentWillMount() {
     this.props.getActiveRound();
+    if (!this.props.allData.length) {
+      this.props.getAllData();
+    }
   }
 
   render() {
-    if (this.props.activeRoundDataLoading) {
+    if (this.props.activeRoundDataLoading || this.props.allDataLoading) {
       return(
         <View style={ BingoHomeStyle.activityIndicatorContainer }>
         <StatusBar
@@ -70,7 +73,9 @@ class BingoHome extends Component {
 function mapStateToProps(state, props) {
   return {
     activeRoundData: state.activeRoundReducer.activeRoundData,
-    activeRoundDataLoading: state.activeRoundReducer.activeRoundDataLoading
+    activeRoundDataLoading: state.activeRoundReducer.activeRoundDataLoading,
+    allDataLoading: state.dataReducer.allDataLoading,
+    allData: state.dataReducer.allData
   }
 }
 
